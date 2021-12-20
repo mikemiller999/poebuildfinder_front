@@ -2,42 +2,47 @@
   <div>
     <!-- <h5>Search</h5>
     <input type="text" v-model="filter" list="c_class" /> -->
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <div class="container">
-      <div class="row">
-        <div class="col-2">
-          <!-- <button v-on:click="setSortAttr('c_class')">Sort by class</button>
-          <button v-on:click="setSortAttr('depth_level')">Sort by max delve</button> -->
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Builds</h2>
         </div>
-        <div class="col">
-          <div v-for="character in orderBy(characters, sortAttr)" :key="character.id">
-            <div class="card w-75">
-              <span>
-                <div class="card-body">
-                  <!-- <img :src="'../assets/' + character.c_class + '.png'" alt="" /> -->
-                  <h4 class="card-title">{{ character.c_class }}</h4>
-                  <p>Max delve:</p>
-                  <p class="card-text">{{ character.depth_level }}</p>
-                  <router-link v-bind:to="`/characters/${character.id}`">
-                    <a href="" class="btn btn-primary">See More</a>
-                  </router-link>
+
+        <div v-for="character in orderBy(characters, sortAttr)" :key="character.id">
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-8 col-md-6 portfolio-item filter-app">
+              <router-link v-bind:to="`/characters/${character.id}`">
+                <div class="col-lg-8 col-md-6 portfolio-item filter-app">
+                  <div class="portfolio-wrap">
+                    <img :src="character.image_url" class="img-fluid" alt="" width="1200" height="1000" />
+
+                    <div class="portfolio-info">
+                      <h4>{{ character.c_class }}</h4>
+                      <p>See Build</p>
+                    </div>
+                  </div>
                 </div>
-              </span>
+              </router-link>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- End Portfolio Section -->
   </div>
 </template>
 
-<style>
-span:hover {
-  background: green;
-  transition: background-color 0.25s ease;
-}
-</style>
-
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
 <script>
 import axios from "axios";
 import Vue2Filters from "vue2-filters";

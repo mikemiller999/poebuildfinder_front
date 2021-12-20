@@ -1,8 +1,12 @@
 <template>
   <div>
+    <br />
+    <br />
+    <br />
     <section id="faq" class="faq section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
+          <h1>{{ character.c_class }}</h1>
           <h2>Build details</h2>
         </div>
 
@@ -14,11 +18,13 @@
               <i class="bi bi-chevron-up icon-close"></i>
             </div>
             <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-              <p>
+              <li>
                 {{ character.loadout.neck }}
+                <br />
                 {{ character.loadout.ring1 }}
+                <br />
                 {{ character.loadout.ring2 }}
-              </p>
+              </li>
             </div>
           </li>
 
@@ -29,93 +35,47 @@
               <i class="bi bi-chevron-up icon-close"></i>
             </div>
             <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-              <p>
+              <li>
                 {{ character.loadout.chest }}
+                <br />
                 {{ character.loadout.helm }}
+                <br />
                 {{ character.loadout.gloves }}
+                <br />
                 {{ character.loadout.boots }}
-              </p>
+              </li>
             </div>
           </li>
 
           <li>
-            <div d,ta-bs-toggle="collapse" href="#faq3" class="collapsed question">
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">
               Belt, Weapons
               <i class="bi bi-chevron-down icon-show"></i>
               <i class="bi bi-chevron-up icon-close"></i>
             </div>
             <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-              <p>
+              <li>
                 {{ character.loadout.left_hand }}
+                <br />
                 {{ character.loadout.right_hand }}
+                <br />
                 {{ character.loadout.belt }}
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">
-              Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-              <i class="bi bi-chevron-down icon-show"></i>
-              <i class="bi bi-chevron-up icon-close"></i>
-            </div>
-            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id
-                donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit
-                ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">
-              Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-              <i class="bi bi-chevron-down icon-show"></i>
-              <i class="bi bi-chevron-up icon-close"></i>
-            </div>
-            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc
-                vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus
-                gravida quis blandit turpis cursus in
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">
-              Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor?
-              <i class="bi bi-chevron-down icon-show"></i>
-              <i class="bi bi-chevron-up icon-close"></i>
-            </div>
-            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada
-                nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis
-                tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas
-                fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-              </p>
+              </li>
             </div>
           </li>
         </ul>
       </div>
+      <button v-on:click="addFavorite()">Save</button>
     </section>
-    <!-- End F.A.Q Section -->
-    <!-- <img :src="'../assets/' + character.c_class + '.png'" alt="" /> -->
-    <h1>{{ character.c_class }}</h1>
-    <h6>{{ character.loadout.helm }}</h6>
-    <h6>{{ character.loadout.chest }}</h6>
-    <h6>{{ character.loadout.belt }}</h6>
-    <h6>{{ character.loadout.boots }}</h6>
-    <h6>{{ character.loadout.left_hand }}</h6>
-    <h6>{{ character.loadout.right_hand }}</h6>
-    <h6>{{ character.loadout.ring1 }}</h6>
-    <h6>{{ character.loadout.ring2 }}</h6>
-    <h6>{{ character.loadout.neck }}</h6>
   </div>
 </template>
-
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/js/main.js"></script>
 <script>
 import axios from "axios";
 export default {
@@ -127,8 +87,13 @@ export default {
   created: function () {
     axios.get("/characters/" + this.$route.params.id).then((response) => {
       this.character = response.data;
+      console.log(this.character);
     });
   },
-  methods: {},
+  methods: {
+    addFavorite() {
+      axios.post("/save/" + this.character.id);
+    },
+  },
 };
 </script>

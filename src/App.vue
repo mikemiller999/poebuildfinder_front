@@ -14,7 +14,7 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li v-if="loggedIn()" class="nav-item">
-              <a class="nav-link scrollto" href="/FavoriteIndex">Favorites</a>
+              <a class="nav-link scrollto" href="/favorites">Favorites</a>
             </li>
 
             <li class="dropdown">
