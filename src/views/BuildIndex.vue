@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- <h5>Search</h5>
-    <input type="text" v-model="filter" list="c_class" /> -->
     <br />
     <br />
     <br />
@@ -10,7 +8,9 @@
     <section id="portfolio" class="portfolio">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Builds</h2>
+          <h1>Builds</h1>
+          <!-- <h2>Search</h2>
+          <input type="text" v-model="filter" list="c_class" /> -->
         </div>
 
         <div v-for="character in orderBy(characters, sortAttr)" :key="character.id">
@@ -19,10 +19,11 @@
               <router-link v-bind:to="`/characters/${character.id}`">
                 <div class="col-lg-8 col-md-6 portfolio-item filter-app">
                   <div class="portfolio-wrap">
-                    <img :src="character.image_url" class="img-fluid" alt="" width="1200" height="1000" />
+                    <img :src="character.image_url" class="img-fluid" alt="" width="1000" height="800" />
 
                     <div class="portfolio-info">
                       <h4>{{ character.c_class }}</h4>
+                      <p>Current Delve: {{ character.depth_level }}</p>
                       <p>See Build</p>
                     </div>
                   </div>

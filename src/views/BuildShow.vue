@@ -30,7 +30,7 @@
 
           <li>
             <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">
-              Armor, Gloves, Boots, Helmet
+              Armor, Boots, Helmet
               <i class="bi bi-chevron-down icon-show"></i>
               <i class="bi bi-chevron-up icon-close"></i>
             </div>
@@ -39,8 +39,6 @@
                 {{ character.loadout.chest }}
                 <br />
                 {{ character.loadout.helm }}
-                <br />
-                {{ character.loadout.gloves }}
                 <br />
                 {{ character.loadout.boots }}
               </li>
